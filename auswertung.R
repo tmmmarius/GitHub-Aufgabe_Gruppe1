@@ -1,5 +1,6 @@
-#Enthaelt Funktionen fuer die statistische Auswertung
+#Auswertung der Daten
 source("helper.R") #Hilfsfunktionen
+source("funktionen.R")
 
 ##Daten laden
 #Zugriff auf die Variablen wie folgt: daten$VARIABLENNAME
@@ -7,13 +8,8 @@ source("helper.R") #Hilfsfunktionen
 #auf der Konsole ausgegeben
 daten = getData(str = TRUE) 
 
-
-#Berechnung und Ausgabe von Statistiken fuer metrische Variablen
-metrischeVariablen = function(x){
-  
-  mittelwert = mean(x)
-  
-  
-  return(list("arithmetisches Mittel" = mittelwert))
-}
 metrischeVariablen(daten$Alter)
+
+
+
+
