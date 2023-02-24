@@ -17,3 +17,13 @@ qk <- function(x){
   
   return(list("Kategorisiert" = Kategorie))
 }
+
+# 3 d) Zusammenhang zwischen metrischer und dichotomer Variable
+md <- function(x,y){
+  if(sum(y != 0 & y != 1) != 0){return("y muss dichotom sein")}
+  
+  ja <- mean(x[which(y == 1)])
+  nein <- mean(x[which(y == 0)])
+  return(list("Durchschnittsalter von Leuten, die Mathe-LK hatten" = ja, 
+              "Durchschnittsalter von Leuten, die kein Mathe-LK hatten" = nein))
+}
