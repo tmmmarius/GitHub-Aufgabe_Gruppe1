@@ -27,3 +27,19 @@ md <- function(x,y){
   return(list("Durchschnittsalter von Leuten, die Mathe-LK hatten" = ja, 
               "Durchschnittsalter von Leuten, die kein Mathe-LK hatten" = nein))
 }
+
+# 3 c) Zusammenhang zwischen zwei kategorialen Variablen
+zk <- function(Studienfach, MatheLK){
+  st1 <- sum(Studienfach[which(MatheLK == 1)] == "Statistik")
+  st0 <- sum(Studienfach[which(MatheLK == 0)] == "Statistik")
+  ds1 <- sum(Studienfach[which(MatheLK == 1)] == "Data Science")
+  ds0 <- sum(Studienfach[which(MatheLK == 0)] == "Data Science")
+  m1 <- sum(Studienfach[which(MatheLK == 1)] == "Mathe")
+  m0 <- sum(Studienfach[which(MatheLK == 0)] == "Mathe")
+  i1 <- sum(Studienfach[which(MatheLK == 1)] == "Informatik")
+  i0 <- sum(Studienfach[which(MatheLK == 1)] == "Informatik")
+  mx <- matrix(c(st1, st0, ds1, ds0, m1, m0, i1, i0), nrow = 2)
+  barplot(mx, beside = TRUE, names.arg = c("Statistik", "Data Science","Mathe", "Informatik"),
+          main = "Verteilung der Studienfaecher von Studenten mit und ohne Mathe-LK", col = c("black", "white"), xlab = "Studienfaecher", ylab = "Absolute Haeufigkeit")
+  legend("topleft", c("Mit Mathe-LK","Ohne Mathe-LK"), fill = c("black", "white"), cex = 0.8)  
+}
