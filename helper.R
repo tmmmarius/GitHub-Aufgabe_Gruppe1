@@ -1,10 +1,15 @@
 getData = function(str = FALSE){
   
-  #Struktur des Datensatzes auf der Konsole ausgeben
+  #Daten aus der CSV-Datei in data Objekt einlesen
+  data = read.csv2("daten.csv", header = TRUE)
+  #Ueberschrift der ersten Spalte in "ID" aendern
+  colnames(data)[1] = "ID"
+  
+  #Optional: Struktur des Datensatzes auf der Konsole ausgeben
   if(str == TRUE){
     str(data)
   }
   
-  return(read.csv2("daten.csv", header = TRUE))
+  return(data)
   
 }

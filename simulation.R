@@ -38,3 +38,7 @@ for (i in 1:100)
 # damit sind die Variablen erstellt, nun werden diese noch in einem Datensatz ueberfuehrt. 
 
 datenStudenten <-data.frame(ID, Alter, Studienfach, InteresseMathe, InteresseProgrammieren = InteresseInformatik, MatheLK)
+
+#Export der Simulationsdaten in die CSV-Datei
+#id automatisch inkludiert, daher ausschliessen
+write.csv2(datenStudenten[-1] , "daten.csv")
