@@ -27,3 +27,23 @@ md <- function(x,y){
   return(list("Durchschnittsalter von Leuten, die Mathe-LK hatten" = ja, 
               "Durchschnittsalter von Leuten, die kein Mathe-LK hatten" = nein))
 }
+
+####################
+
+# 3f 
+
+VisualizierungStudienfaecher <- function(daten)
+{
+  # daten muss kategoriale daten enthalten und ein Vektor sein
+  # es gibt zwei plots
+  par(mfrow = c(1,2))
+  
+  # absolute Haeufigkeit
+  H <- data.frame(table(daten))
+  barplot(height = H$Freq, names.arg = H$daten, ylim = c(0,length(daten)), xlab = "Studienfach", ylab = "absolute Haeufigkeit")
+  
+  # relative Haufigkeit
+  relativerAnteile <- table(daten)/length(daten)
+  P <- data.frame(relativerAnteile)
+  barplot(height = P$Freq, names.arg = P$daten, ylim = c(0,1), xlab = "Studienfach", ylab = "relative Haeufigkeit")
+}
