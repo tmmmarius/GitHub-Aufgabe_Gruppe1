@@ -84,3 +84,33 @@ VisualizierungStudienfaecher <- function(daten)
   P <- data.frame(relativerAnteile)
   barplot(height = P$Freq, names.arg = P$daten, ylim = c(0,1), xlab = "Studienfach", ylab = "relative Haeufigkeit")
 }
+
+
+# 3b)
+# Hauefigkeitstabelle
+deskfun <- function(x){
+  list("Haeufigkeitstabelle" = table(x) / length(x)) 
+}
+
+# Modus
+deskfun2 <- getmode <- function(x) {
+  uniqv <- unique(x)
+  uniqv[which.max(tabulate(match(x, uniqv)))]
+}
+
+# 3c)
+# Barplot für Verteilung der Studienfaecher von Studenten mit und ohne Mathe-LK
+zk <- function(Studienfach, MatheLK){
+  st1 <- sum(Studienfach[which(MatheLK == 1)] == "Statistik")
+  st0 <- sum(Studienfach[which(MatheLK == 0)] == "Statistik")
+  ds1 <- sum(Studienfach[which(MatheLK == 1)] == "Data Science")
+  ds0 <- sum(Studienfach[which(MatheLK == 0)] == "Data Science")
+  m1 <- sum(Studienfach[which(MatheLK == 1)] == "Mathe")
+  m0 <- sum(Studienfach[which(MatheLK == 0)] == "Mathe")
+  i1 <- sum(Studienfach[which(MatheLK == 1)] == "Informatik")
+  i0 <- sum(Studienfach[which(MatheLK == 1)] == "Informatik")
+  mx <- matrix(c(st1, st0, ds1, ds0, m1, m0, i1, i0), nrow = 2)
+  barplot(mx, beside = TRUE, names.arg = c("Statistik", "Data Science","Mathe", "Informatik"),
+          main = "Verteilung der Studienfaecher von Studenten mit und ohne Mathe-LK", col = c("black", "white"), xlab = "Studienfaecher", ylab = "Absolute Haeufigkeit")
+  legend("topleft", c("Mit Mathe-LK","Ohne Mathe-LK"), fill = c("black", "white"), cex = 0.8)  
+}
