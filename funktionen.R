@@ -1,10 +1,27 @@
-#Berechnung und Ausgabe von Statistiken fuer metrische Variablen
-metrischeVariablen = function(x){
+# 3a) deskriptive Statistiken fuer metrische Variablen
+#Input: numerischer Vektor (kein NA handling); Rueckgabe: Liste 
+#Optional kann ueber das Argument graphic = TRUE ein Boxplot ausgegeben werden. 
+#Ueber den cut Paramter kann fuer das getrimmte arithemtische Mittel die zu 
+#ignorierenden Werte eingestellt werden. Standard ist: 0.1. Das Bedeutet: 
+#Werte unterhalb des 10% Quantil und oberhalb des 90% Qunatil werden ignoriert
+metrischeVariablen = function(x, graphic = FALSE, cut = 0.1){
   
-  mittelwert = mean(x)
+  metrischeStatisitken = list(
   
+    ##Lageparameter
+    
+    "arithmetisches_Mittel" = mean(x),
+    
+    "getrimmtes artihmetisches Mittel" = mean(x, trim = cut),
+    
+    "Median" = median(x),
+    
+    "Haeufigkeitstabelle/ Modus" = table(x),
+    
+  )
+
+  return(metrischeStatisitken)
   
-  return(list("arithmetisches Mittel" = mittelwert))
 }
 metrischeVariablen(daten$Alter)
 
