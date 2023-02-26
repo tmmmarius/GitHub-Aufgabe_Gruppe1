@@ -32,7 +32,15 @@ metrischeVariablen = function(x, graphic = FALSE, cut = 0.1){
     
     "Standardabweichung" = sd(x),
     
-    "Variationskoeffizient" = sd(x)/mean(x)
+    "Variationskoeffizient" = sd(x)/mean(x),
+    
+    
+    
+    ##Quantile
+    
+    "Quantile" = quantile(x, probs = c(0.25, 0.75)),
+    
+    "Interquartilsabstand" = IQR(x)
     
   )
 
