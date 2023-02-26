@@ -18,6 +18,22 @@ metrischeVariablen = function(x, graphic = FALSE, cut = 0.1){
     
     "Haeufigkeitstabelle/ Modus" = table(x),
     
+    
+    
+    ##Streuungsparameter/ -masse
+    
+    "Minimum" = min(x),
+    
+    "Maximum" = max(x),
+    
+    "Spannweite" = max(x) - min(x),
+    
+    "Varianz" = var(x),
+    
+    "Standardabweichung" = sd(x),
+    
+    "Variationskoeffizient" = sd(x)/mean(x)
+    
   )
 
   return(metrischeStatisitken)
