@@ -11,38 +11,34 @@ metrischeVariablen = function(x, graphic = FALSE, cut = 0.1){
     ##Lageparameter
     
     "arithmetisches_Mittel" = mean(x),
-    
     "getrimmtes artihmetisches Mittel" = mean(x, trim = cut),
-    
     "Median" = median(x),
-    
     "Haeufigkeitstabelle/ Modus" = table(x),
-    
     
     
     ##Streuungsparameter/ -masse
     
     "Minimum" = min(x),
-    
     "Maximum" = max(x),
-    
     "Spannweite" = max(x) - min(x),
-    
     "Varianz" = var(x),
-    
     "Standardabweichung" = sd(x),
-    
     "Variationskoeffizient" = sd(x)/mean(x),
-    
     
     
     ##Quantile
     
     "Quantile" = quantile(x, probs = c(0.25, 0.75)),
-    
     "Interquartilsabstand" = IQR(x)
     
   )
+  
+  #Optional: Boxplot ausgeben
+  if(graphic == TRUE) boxplot(x, 
+                              horizontal = TRUE, #Horizontal anzeigen
+                              outline = TRUE, #Ausreisser als Whisker
+                              xlab = names(x) #Achsenbeschriftung
+                              )
 
   return(metrischeStatisitken)
   
